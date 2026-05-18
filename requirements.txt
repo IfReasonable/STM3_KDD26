@@ -1,0 +1,6 @@
+causal-conv1d==1.5.0.post8
+einops==0.8.0
+mamba-ssm==2.2.4
+numpy==2.2.1
+torch-geometric==2.6.1
+torch==2.5.1
