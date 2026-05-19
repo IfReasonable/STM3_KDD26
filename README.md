@@ -5,11 +5,6 @@
 <a href="https://arxiv.org/abs/2508.12247"><img src="https://img.shields.io/badge/arXiv-2508.12247-b31b1b.svg?style=for-the-badge" alt="arXiv"></a>
 <a><img src="https://img.shields.io/badge/KDD-2026-4B8BBE.svg?style=for-the-badge" alt="KDD 2026"></a>
 
-
-<p>
-  Official implementation of <b>STM3</b>, accepted by <b>KDD 2026</b>.
-</p>
-
 </div>
 
 STM3 is designed for long-term spatio-temporal forecasting, where multiscale temporal patterns and heterogeneous spatial dependencies are deeply entangled. It addresses this challenge with three core components:
@@ -28,7 +23,7 @@ STM3 is designed for long-term spatio-temporal forecasting, where multiscale tem
 
 ## Installation
 
-We recommend using a Conda environment with Python 3.10.
+We recommend using a Conda environment.
 
 ```bash
 conda create -n stpredict python=3.10
@@ -40,93 +35,15 @@ Some dependencies, such as `mamba-ssm` and `causal-conv1d`, are sensitive to CUD
 
 ## Data
 
-This repository expects datasets under the `data/` directory. The current layout is:
+Datasets are available [here](https://zenodo.org/records/17946270).
 
-```text
-data/
-├── ETT-small/
-├── electricity/
-├── KnowAir/
-├── METR_LA/
-├── Milan/
-├── NREL/
-├── PEMS08/
-└── PeMS04/
-```
-
-Datasets are available here:
-
-```text
-https://zenodo.org/records/17946270
-```
 
 After downloading, place each dataset in the corresponding subdirectory under `data/`.
 
 ## Quick Start
 
-Train STM3 on METR-LA:
-
 ```bash
 python run.py --dataset METR_LA --model STM3 --lag 96 --horizon 96 --cuda_devices 0
-```
-
-Run on CPU:
-
-```bash
-python run.py --dataset METR_LA --model STM3 --lag 96 --horizon 96 --cpu
-```
-
-Use multiple GPUs:
-
-```bash
-python run.py --dataset METR_LA --model STM3 --lag 96 --horizon 96 --cuda_devices 0 1
-```
-
-## Configuration
-
-Dataset-specific configs are stored in `config_file/`:
-
-```text
-config_file/
-├── ETTh1_STM3.conf
-├── Electricity_STM3.conf
-├── KnowAir_STM3.conf
-├── METR_LA_STM3.conf
-├── Milan_call_STM3.conf
-├── Milan_internet_STM3.conf
-├── Milan_sms_STM3.conf
-├── NREL_STM3.conf
-├── PEMSD4_STM3.conf
-└── PEMSD8_STM3.conf
-```
-
-The main runtime arguments are:
-
-| Argument | Description | Example |
-| --- | --- | --- |
-| `--dataset` | Dataset name matching a config prefix | `METR_LA` |
-| `--model` | Model name | `STM3` |
-| `--lag` | Historical input length | `96` |
-| `--horizon` | Prediction horizon | `96` |
-| `--cuda_devices` | CUDA device ids | `0` |
-| `--cpu` | Run on CPU | flag |
-
-## Repository Structure
-
-```text
-STM3_KDD26/
-├── assets/
-│   └── main.png                 # STM3 overview figure
-├── config_file/                 # Dataset-specific STM3 configs
-├── data/                        # Dataset directory
-├── lib/                         # Data loading, metrics, logging, utilities
-├── model/
-│   ├── BasicTrainer.py          # Training and evaluation loop
-│   ├── STM3.py                  # STM3 model implementation
-│   └── predifineGraph.py        # Graph utility
-├── requirements.txt             # Python dependencies
-├── run.py                       # Main entry point
-└── README.md
 ```
 
 ## Citation
