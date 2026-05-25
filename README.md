@@ -110,8 +110,3 @@ If you find this repository useful, please cite:
   publisher={IEEE}
 }
 ```
-
-
-## Acknowledgements
-
-We thank the authors of [DDGCRN](https://github.com/wengwenchao123/DDGCRN) for releasing their codebase, which provides helpful infrastructure for spatio-temporal forecasting experiments.
